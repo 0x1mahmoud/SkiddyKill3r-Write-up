@@ -214,7 +214,7 @@ Upgrade-Insecure-Requests: 1
 Cookie: flag=NOOPCJF;flag1=MMHUWUV
 ```
 
-# it will respnse and give you the FLAG...
+# it will response and give you the FLAG...
 ## Hope you got it
 ### Hint
 #### Flag Format: **xyYXyyy{Yxyx_Yx_Yyyx_Yxy_Yxy}**
